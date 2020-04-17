@@ -1,6 +1,7 @@
 import React, {useContext , useState} from "react"
 import { addSmurf } from "../actions"
 import { SmurfContext } from "../context"
+import { AwesomeButton, AwesomeInput, FormContainerDiv, AwesomeLabel  } from "../styles"
 
 const SmurfForm = () => {
     const { dispatch } = useContext(SmurfContext);
@@ -21,45 +22,45 @@ const SmurfForm = () => {
     }
 
     return (
-        <div>
+        <FormContainerDiv>
              <form onSubmit={handleAdd}>
         
-          <label htmlFor="name">
+          <AwesomeLabel htmlFor="name">
             Name: 
-            <input
+            <AwesomeInput
               id="name"
               type="text"
               name="name"
               value={formState.name}
               onChange={handleChange}
-              placeholder="Please Enter your Name"
+              placeholder="Enter Name"
             />
-          </label>
-          <label htmlFor="height">
+          </AwesomeLabel>
+          <AwesomeLabel htmlFor="height">
             Height: 
-            <input
+            <AwesomeInput
               id="height"
               type="text"
               name="height"
               value={formState.height}
               onChange={handleChange}
-              placeholder="Please Enter Height"
+              placeholder="Enter Height"
             />
-          </label>
-          <label htmlFor="age">
+          </AwesomeLabel>
+          <AwesomeLabel htmlFor="age">
             Age: 
-            <input
+            <AwesomeInput
               id="age"
               type="text"
               name="age"
               value={formState.age}
               onChange={handleChange}
-              placeholder="Please Enter Age"
+              placeholder="Enter Age"
             />
-          </label>
-          <button onClick={handleAdd}>Add Smurf</button>
+          </AwesomeLabel>
+          <AwesomeButton onClick={handleAdd}>Add Smurf</AwesomeButton>
           </form>
-        </div>
+        </FormContainerDiv>
     )
 
 }

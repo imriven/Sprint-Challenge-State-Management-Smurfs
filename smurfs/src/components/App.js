@@ -7,10 +7,7 @@ import { getSmurfs } from "../actions"
 import { Loader } from "react-loader-spinner"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import SmurfForm  from "./smurfForm"
-import  { ImageBackground }  from "../styles"
-import { ContainerDiv } from "../styles"
-import { ExcellentHeader }  from "../styles"
-import { TitleDiv } from "../styles"
+import  { ImageBackground, ContainerDiv, ExcellentHeader, TitleDiv }  from "../styles"
 
  /*
  to wire this component up you're going to need a few things.
@@ -30,7 +27,7 @@ function App() {
       <ImageBackground>
         <ContainerDiv>
           <TitleDiv>
-        <ExcellentHeader>SMURFS! 2.0 W/ Redux</ExcellentHeader>
+        <ExcellentHeader>SMURFS! 2.0 W/O Redux</ExcellentHeader>
         </TitleDiv>
         {state.isFetching && <Loader
          type="Puff"
