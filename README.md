@@ -22,12 +22,19 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] What problem does the context API help solve?
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-- [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
 
+`Actions` contain payloads  that send data from the app to the Redux Data Store.
+A `reducer` is a function that takes a previous state and action pushes it to the next state.
+the `store` holds all of the data that needs to be passed around in the App.
+Store is known as the single source of truth because it holds all of the data for the app. We no longer have to trickle down information.
+
+- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+The application state is global, and component state is local. App state is held in stores meaning any component can access it once it's connected. Component state only exists in that component and passed down to its children by props.
+
+- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`? 
+It's middleware so something that interacts with our actions before the action can get to the reducer. We can use this when our action needs information from elsewhere and it'll fire before it gets that information back without middleware.
 ## Project Set Up
 
 Follow these steps to set up your project:
