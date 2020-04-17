@@ -1,16 +1,50 @@
-import React, { Component } from "react";
-import "./App.css";
-class App extends Component {
-  render() {
+import React, { useReducer, useEffect } from 'react';
+import './App.css';
+import { SmurfContext } from "../context"
+import { reducer, initialState } from "../reducers"
+import SmurfList from "./smurfList"
+import { getSmurfs } from "../actions"
+import { Loader } from "react-loader-spinner"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import SmurfForm  from "./smurfForm"
+import  { ImageBackground, ContainerDiv, ExcellentHeader, TitleDiv }  from "../styles"
+
+ /*
+ to wire this component up you're going to need a few things.
+ I'll let you do this part on your own. 
+ Just remember, `how do I `connect` my components to redux?`
+ `How do I ensure that my component links the state to props?`
+ */
+function App() {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+  useEffect(() => {
+    getSmurfs(dispatch)
+  }, [])
+ 
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+      <SmurfContext.Provider value={{state, dispatch}}>
+      <ImageBackground>
+        <ContainerDiv>
+          <TitleDiv>
+        <ExcellentHeader>SMURFS! 2.0 W/O Redux</ExcellentHeader>
+        </TitleDiv>
+        {state.isFetching && <Loader
+         type="Puff"
+         color="#00BFFF"
+         height={100}
+         width={100}
+         timeout={3000} //3 secs
+ 
+      />}
+      {state.error && <p>{state.error}</p>}
+        <SmurfList />
+        <SmurfForm />
+        </ContainerDiv>
+      </ImageBackground>
+    </SmurfContext.Provider>
     );
-  }
+
 }
 
 export default App;
